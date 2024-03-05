@@ -17,9 +17,9 @@ type Input struct {
 type Output struct {
 	Type       uint8                  `json:"type"`
 	Amount     number.Decimal         `json:"amount"`
-	Keys       []*crypto.Key          `json:"keys"`
-	Script     common.Script          `json:"script"`
-	Mask       crypto.Key             `json:"mask"`
+	Keys       []*crypto.Key          `json:"keys,omitempty"`
+	Script     common.Script          `json:"script,omitempty"`
+	Mask       crypto.Key             `json:"mask,omitempty"`
 	Withdrawal *common.WithdrawalData `json:"withdrawal,omitempty"`
 }
 
