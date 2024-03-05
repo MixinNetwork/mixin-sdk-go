@@ -11,7 +11,9 @@ import (
 type Input struct {
 	Hash    string              `json:"hash"`
 	Index   int                 `json:"index"`
+	Genesis string              `json:"genesis,omitempty"`
 	Deposit *common.DepositData `json:"deposit,omitempty"`
+	Mint    *common.MintData    `json:"mint,omitempty"`
 }
 
 type Output struct {
