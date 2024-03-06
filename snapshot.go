@@ -11,13 +11,13 @@ type SnapshotWithTransaction struct {
 }
 
 func (m *MixinNetwork) GetSnapshot(hash string) (*SnapshotWithTransaction, error) {
-	body, err := m.callRPC("getsnapshot", []any{hash})
-	if err != nil {
+	b, err := m.callRPC("getsnapshot", []any{hash})
+	if err != nil || b == nil {
 		return nil, err
 	}
 	var s SnapshotWithTransaction
-	err = json.Unmarshal(body, &s)
-	if err != nil || s.Hash == "" {
+	err = json.Unmarshal(b, &s)
+	if err != nil {
 		return nil, err
 	}
 	return &s, err

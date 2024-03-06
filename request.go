@@ -57,6 +57,8 @@ func (m *MixinNetwork) callRPC(method string, params []any) ([]byte, error) {
 	if result.Error != nil {
 		return nil, fmt.Errorf("ERROR %s", result.Error)
 	}
-
+	if result.Data == nil {
+		return nil, nil
+	}
 	return json.Marshal(result.Data)
 }

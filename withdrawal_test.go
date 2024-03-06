@@ -26,4 +26,8 @@ func TestWithdrawal(t *testing.T) {
 	require.Equal("b6fbe6f7d34906725c7a54e89c95c07717dee7cab033b3e6d69db485bbcb3089", tx.Hash)
 	extra, _ := hex.DecodeString(tx.Extra)
 	require.Equal("658aace0c5e2291ca91f2dd734dc533db68c447f78f2428682349396084dc4cc", string(extra[64:]))
+
+	tx, err = mn.GetWithdrawalClaim("2e04fba82c1f874602a7baf1e5d0d56b6dfdc28b8af1c43b368ba1f5654aada1")
+	require.Nil(err)
+	require.Nil(tx)
 }

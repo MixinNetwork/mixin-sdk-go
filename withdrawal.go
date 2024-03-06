@@ -1,6 +1,8 @@
 package kernel
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 func (m *MixinNetwork) GetWithdrawalClaim(tx string) (*Transaction, error) {
 	b, err := m.callRPC("getwithdrawalclaim", []any{tx})

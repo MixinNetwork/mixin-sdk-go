@@ -48,12 +48,12 @@ func (m *MixinNetwork) SendRawTransaction(raw string) (*Transaction, error) {
 }
 
 func (m *MixinNetwork) GetTransaction(hash string) (*Transaction, error) {
-	body, err := m.callRPC("gettransaction", []any{hash})
-	if err != nil {
+	b, err := m.callRPC("gettransaction", []any{hash})
+	if err != nil || b == nil {
 		return nil, err
 	}
 	var tx Transaction
-	err = json.Unmarshal(body, &tx)
+	err = json.Unmarshal(b, &tx)
 	if err != nil || tx.Hash == "" {
 		return nil, err
 	}
